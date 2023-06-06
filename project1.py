@@ -7,7 +7,7 @@ number_of_links = "5"
 
 
 
-def giphy_gif(name:str) ->dict:
+def giphy_gif(name:str) ->list:
   links = []
   # name = input("Input a name: ")
   params = parse.urlencode({
@@ -17,7 +17,6 @@ def giphy_gif(name:str) ->dict:
   })
   with request.urlopen("".join((url, "?", params))) as response:
     data = (json.loads(response.read()))["data"]
-  for item  in data:
-    links.append(item['url'])
-  return(links)
+  links = [item["url"] for item  in data]
+  return links
 

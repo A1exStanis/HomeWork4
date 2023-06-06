@@ -5,7 +5,7 @@ api_key = "6206705730:AAGDucqSW0Nh5vAlYvZi6N4auxvRa6TT46Q"
 bot = telebot.TeleBot(api_key)
 
 @bot.message_handler()
-def answering(message):
+def answering(message: list) -> str:
     name = message.text
     links = giphy_gif(name)
     for link in links:
